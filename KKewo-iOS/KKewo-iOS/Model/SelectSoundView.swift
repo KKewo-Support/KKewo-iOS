@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SelectSoundView: View {
+    let soundList = ["기본 벨소리", "Leeo의 감미로운 뮤지컬", "애원하는 Friday", "Ringo의 링고링고링~", "조심스러운 Howard"]
     var body: some View {
         HStack {
             Button(action: {}) {
@@ -70,7 +71,6 @@ struct SelectSoundView: View {
         // 벨소리 선택
         ScrollView {
             VStack{
-                
                 // 벨소리 추천받기 버튼
                 Button(action: {
                     print("추천하기")
@@ -94,8 +94,36 @@ struct SelectSoundView: View {
                     )
                 }
                 .padding(.horizontal)
+
+                // 벨소리 목록
+                ForEach(soundList, id: \.self) { sound in
+                    Button(action:{
+                        print("\(sound)")
+                    }) {
+                        HStack {
+                            Image("soundRecommend")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 44, height: 44)
+                                .padding(.trailing, 20)
+                            
+                            Text(sound)
+                                .font(.custom("Pretendard-SemiBold", size: 16))
+                                .foregroundColor(.black)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
+                    }
+                    .padding(.horizontal)
+
+                }
             }
         }
+        .padding(.vertical)
     }
 }
 
