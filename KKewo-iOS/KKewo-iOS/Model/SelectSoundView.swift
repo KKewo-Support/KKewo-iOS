@@ -51,6 +51,8 @@ struct SelectSoundView: View {
                         handleAll()
                     }
                 }) {
+                    Spacer()
+
                     Text(category)
                         .font(.custom("Pretendard-SemiBold", size: 16))
                         .foregroundColor(.black)
@@ -60,10 +62,38 @@ struct SelectSoundView: View {
                                 .stroke(Color.gray, lineWidth: 1)
                         )
                         .cornerRadius(20)
-                        .padding(.horizontal, 5)
                     Spacer()
-
                 }
+            }
+        }
+        
+        // 벨소리 선택
+        ScrollView {
+            VStack{
+                
+                // 벨소리 추천받기 버튼
+                Button(action: {
+                    print("추천하기")
+                }) {
+                    HStack{
+                        Image("soundRecommend")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 44, height: 44)
+                            .padding(.trailing, 20)
+                        
+                        Text("벨소리 추천받기")
+                            .font(.custom("Pretendard-SemiBold", size: 16))
+                            .foregroundColor(.black)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+                }
+                .padding(.horizontal)
             }
         }
     }
