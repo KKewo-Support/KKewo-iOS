@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct RecommendChipsView: View {
+    @Binding var selectedChips: Set<String>
+    
     let chips: [String]
     let spacing: CGFloat = 8
-    @Binding var selectedChips: Set<String>
 
     var body: some View {
         GeometryReader { geo in
