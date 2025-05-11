@@ -30,8 +30,8 @@ struct RecommendSoundView: View {
                 
                 ForEach(chips.chunked(into: 3), id: \.self) { row in
                     RecommendChipsView(
+                        selectedChips: $selectedChips,
                         chips: row,
-                        selectedChips: $selectedChips
                     )
                         .frame(height: 64)
                 }
