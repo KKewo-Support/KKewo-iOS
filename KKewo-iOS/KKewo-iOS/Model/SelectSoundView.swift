@@ -9,6 +9,23 @@ import SwiftUI
 
 struct SelectSoundView: View {
     let soundList = ["기본 벨소리", "Leeo의 감미로운 뮤지컬", "애원하는 Friday", "Ringo의 링고링고링~", "조심스러운 Howard"]
+    
+    func handleAll() {
+        print("all")
+    }
+
+    func handleExciting() {
+        print("exciting")
+    }
+
+    func handleQuiet() {
+        print("quiet")
+    }
+
+    func handleNoisy() {
+        print("noisy")
+    }
+
     var body: some View {
         HStack {
             Button(action: {}) {
@@ -125,22 +142,6 @@ struct SelectSoundView: View {
         }
         .padding(.vertical)
     }
-}
-
-func handleAll() {
-    print("all")
-}
-
-func handleExciting() {
-    print("exciting")
-}
-
-func handleQuiet() {
-    print("quiet")
-}
-
-func handleNoisy() {
-    print("noisy")
 }
 
 #Preview {
