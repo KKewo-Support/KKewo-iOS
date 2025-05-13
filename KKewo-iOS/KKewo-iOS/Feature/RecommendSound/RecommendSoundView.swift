@@ -38,20 +38,12 @@ struct RecommendSoundView: View {
                 
                 Spacer()
                 
-                Button {
-                    
-                } label: {
-                    Text("완료")
-                        .font(.pretendard(type: .semibold, size: 18))
-                        .foregroundStyle(!selectedChips.isEmpty ? .white : .gray02)
-                }
-                .frame(maxWidth: .infinity, minHeight: 56)
-                .background(!selectedChips.isEmpty ? Color.orange01 : Color.gray01)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-                .padding(.bottom, 24)
+                CustomBorderButton(action: { },
+                                   title: "완료",
+                                   titleColor: !selectedChips.isEmpty ? .white : .gray02, backgroundColor: !selectedChips.isEmpty ? .orange01 : .gray01
+                )
                 .disabled(selectedChips.isEmpty)
             }
-            
         }
         .padding(.horizontal, 24)
         .padding(.top, 68)
