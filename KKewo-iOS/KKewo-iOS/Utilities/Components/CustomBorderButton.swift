@@ -30,10 +30,10 @@ struct CustomBorderButton: View {
             Text(title)
                 .foregroundStyle(titleColor)
                 .font(.pretendard(type: .semibold, size: 18))
+                .frame(maxWidth: .infinity, minHeight: 56)
+                .background(backgroundColor)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
         }
-        .frame(maxWidth: .infinity, minHeight: 56)
-        .background(backgroundColor)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
 
