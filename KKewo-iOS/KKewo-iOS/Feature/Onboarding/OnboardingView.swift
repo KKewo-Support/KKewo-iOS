@@ -36,14 +36,26 @@ struct OnboardingView: View {
             .padding(.top, 32)
             
             TabView(selection: $currentPage) {
-                OnboardingAlarmIntroView(onNextButtonTapped: handleNextAction)
+                OnboardingAlarmIntroView()
                     .tag(0)
                 
-                OnboardingVoiceIntroView(onRecommendButtonTapped: handleRecommendAction)
+                OnboardingVoiceIntroView()
                     .tag(1)
             }
             .padding(.top, 72)
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            
+            Spacer()
+            
+            Spacer()
+            
+            CustomBorderButton(action: currentPage == 0 ? handleNextAction : handleRecommendAction,
+                               title: currentPage == 0 ? "다음" : "알람벨 추천받기",
+                               titleColor: .white,
+                               backgroundColor: .orange01
+            )
+            .buttonStyle(.plain)
+            .padding(.horizontal, 24)
         }
         .padding(.vertical, 24)
     }

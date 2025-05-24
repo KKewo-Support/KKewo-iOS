@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct OnboardingVoiceIntroView: View {
-    let onRecommendButtonTapped: () -> Void
-    
     var body: some View {
         VStack {
             Text("멘토들의 목소리로 하루를 시작해볼까요?")
@@ -18,15 +16,10 @@ struct OnboardingVoiceIntroView: View {
             
             Rectangle()
                 .padding(.top, 74)
-            
-            Spacer()
-            
-            CustomBorderButton(action: onRecommendButtonTapped, title: "알람벨 추천받기", titleColor: .white, backgroundColor: .orange01)
-                .padding(.horizontal, 24)
         }
     }
 }
 
 #Preview {
-    OnboardingVoiceIntroView(onRecommendButtonTapped: { })
+    OnboardingVoiceIntroView()
 }
