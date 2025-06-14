@@ -7,11 +7,25 @@
 
 import SwiftUI
 
+enum PlaybackState {
+    case playing
+    case paused
+
+    var iconName: String {
+        switch self {
+        case .playing: return "pause"
+        case .paused: return "sound"
+        }
+    }
+}
+
 struct SoundList: View {
     let sound: String
     let isSelected: Bool
     let onSelect: () -> Void
     let onPause: () -> Void
+  
+    @State private var playbackState: PlaybackState = .paused
 
     var body: some View {
         Button(action: onSelect) {
@@ -56,6 +70,17 @@ struct SoundList: View {
         }
         .padding(.horizontal)
     }
+  
+    private func togglePlayback() {
+      switch playbackState {
+          case .paused:
+              playbackState = .playing
+              onSelect()
+          case .playing:
+              playbackState = .paused
+              onPause()
+          }
+      }
 }
 
 #Preview {
