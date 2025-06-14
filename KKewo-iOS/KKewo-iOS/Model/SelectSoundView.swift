@@ -13,11 +13,15 @@ struct SelectSoundView: View {
     
     @State private var selectedCategory: String = "전체"
     @State private var selectedSound: String? = nil
-    
+    @Environment(\.dismiss) var dismiss
+    @AppStorage("selectedSoundKey") private var savedSound: String = ""
+
     var body: some View {
-        VStack{
+        VStack {
             HStack {
-                Button(action: {}) {
+                Button(action: {
+                    dismiss()
+                }) {
                     Image(systemName: "chevron.left")
                         .imageScale(.large)
                         .foregroundColor(.black)
@@ -97,13 +101,19 @@ struct SelectSoundView: View {
                         SoundList(
                             sound: sound,
                             isSelected: selectedSound == sound,
-                            onSelect: { selectedSound = sound },
+                            onSelect: {
+                              selectedSound = sound
+                              savedSound = sound // 앱을 껐다가 켜도 저장됨
+                            },
                             onPause: { print("\(sound) 일시정지") }
                         )
                     }
                 }
             }
             .padding(.vertical)
+        }
+        .onAppear {
+            selectedSound = savedSound
         }
     }
     
