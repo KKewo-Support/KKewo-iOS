@@ -33,7 +33,10 @@ struct SelectSoundView: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 Spacer()
                 
-                Button(action: {}) {
+                Button(action: {
+                    savedSound = selectedSound ?? ""
+                    dismiss()
+                }) {
                     Text("완료")
                         .font(.custom("Pretendard-Regular", size: 20))
                         .foregroundColor(.orange)
