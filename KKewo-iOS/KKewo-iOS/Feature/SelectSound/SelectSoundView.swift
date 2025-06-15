@@ -123,33 +123,19 @@ struct SelectSoundView: View {
     // 카테고리 선택
     private func handleCategorySelection(_ category: String) {
         selectedCategory = category
-        
+
         switch category {
         case "전체":
-            handleAll()
+            SoundCategoryViewLogic.handleAll()
         case "신나는":
-            handleExciting()
+            SoundCategoryViewLogic.handleExciting()
         case "조용한":
-            handleQuiet()
+            SoundCategoryViewLogic.handleQuiet()
         case "시끄러운":
-            handleNoisy()
+            SoundCategoryViewLogic.handleNoisy()
         default:
-            handleAll()
+            SoundCategoryViewLogic.handleAll()
         }
-    }
-    
-    // 카테고리 함수 처리
-    private func handleAll() {
-        
-    }
-    private func handleExciting() {
-        
-    }
-    private func handleQuiet() {
-        
-    }
-    private func handleNoisy() {
-        
     }
 }
 
