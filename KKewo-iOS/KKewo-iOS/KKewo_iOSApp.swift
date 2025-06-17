@@ -9,9 +9,9 @@ import SwiftUI
 
 @main
 struct KKewo_iOSApp: App {
-    var body: some Scene {
-        WindowGroup {
-            SelectSoundView()
-        }
+  var body: some Scene {
+    WindowGroup {
+      SelectSoundView()
     }
+  }
 }

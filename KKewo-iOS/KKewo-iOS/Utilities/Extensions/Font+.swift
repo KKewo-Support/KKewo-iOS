@@ -8,27 +8,27 @@
 import SwiftUI
 
 extension Font {
-    enum Pretendard {
-        case bold
-        case semibold
-        case medium
-        case regular
-        
-        var value: String {
-            switch self {
-            case .bold:
-                return "Pretendard-Bold"
-            case .semibold:
-                return "Pretendard-SemiBold"
-            case .medium:
-                return "Pretendard-Medium"
-            case .regular:
-                return "Pretendard-Medium"
-            }
-        }
-    }
+  enum Pretendard {
+    case bold
+    case semibold
+    case medium
+    case regular
     
-    static func pretendard(type: Pretendard, size: CGFloat) -> Font {
-        return .custom(type.value, size: size)
+    var value: String {
+      switch self {
+      case .bold:
+        return "Pretendard-Bold"
+      case .semibold:
+        return "Pretendard-SemiBold"
+      case .medium:
+        return "Pretendard-Medium"
+      case .regular:
+        return "Pretendard-Medium"
+      }
     }
+  }
+  
+  static func pretendard(type: Pretendard, size: CGFloat) -> Font {
+    return .custom(type.value, size: size)
+  }
 }
