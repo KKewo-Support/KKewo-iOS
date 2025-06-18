@@ -8,17 +8,34 @@
 import Foundation
 
 class SoundCategoryViewLogic {
-    // 카테고리 함수 처리
-    static func handleAll() {
-        print("전체")
+  static func handleCategory(_ category: String) {
+    switch category {
+    case "전체":
+      handleAll()
+    case "신나는":
+      handleExciting()
+    case "조용한":
+      handleQuiet()
+    case "시끄러운":
+      handleNoisy()
+    default:
+      handleAll()
     }
-    static func handleExciting() {
-        print("신나는")
-    }
-    static func handleQuiet() {
-        print("조용한")
-    }
-    static func handleNoisy() {
-        print("시끄러운")
-    }
+  }
+  
+  static func handleAll() {
+    print("전체")
+  }
+  
+  static func handleExciting() {
+    print("신나는")
+  }
+  
+  static func handleQuiet() {
+    print("조용한")
+  }
+  
+  static func handleNoisy() {
+    print("시끄러운")
+  }
 }
