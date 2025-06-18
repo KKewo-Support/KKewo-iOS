@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SelectSoundView: View {
   let soundCategories = ["전체", "신나는", "조용한", "시끄러운"]
-  let soundList = ["기본 벨소리", "Leeo의 감미로운 뮤지컬", "애원하는 Friday", "Ringo의 링고링고링~", "조심스러운 Howard"]
   
   @State private var selectedCategory: String = "전체"
   @State private var selectedSound: String? = nil
@@ -97,7 +96,7 @@ struct SelectSoundView: View {
           .padding(.horizontal)
           
           // 벨소리 목록
-          ForEach(soundList, id: \.self) { sound in
+          ForEach(SoundCategoryViewLogic.handleCategory(selectedCategory), id: \.self) { sound in
             SoundList(
               sound: sound,
               isSelected: selectedSound == sound,

@@ -8,34 +8,24 @@
 import Foundation
 
 class SoundCategoryViewLogic {
-  static func handleCategory(_ category: String) {
+  static private let soundList = ["기본 벨소리", "Leeo의 감미로운 뮤지컬", "애원하는 Friday", "Ringo의 링고링고링~", "조심스러운 Howard"]
+  
+  static func handleCategory(_ category: String) -> [String] {
     switch category {
     case "전체":
-      handleAll()
+      return soundList
     case "신나는":
-      handleExciting()
+      return ["Leeo의 감미로운 뮤지컬", "Ringo의 링고링고링~"]
     case "조용한":
-      handleQuiet()
+      return ["조심스러운 Howard"]
     case "시끄러운":
-      handleNoisy()
+      return ["애원하는 Friday"]
     default:
-      handleAll()
+      return soundList
     }
   }
   
   static func handleAll() {
     print("전체")
-  }
-  
-  static func handleExciting() {
-    print("신나는")
-  }
-  
-  static func handleQuiet() {
-    print("조용한")
-  }
-  
-  static func handleNoisy() {
-    print("시끄러운")
   }
 }
