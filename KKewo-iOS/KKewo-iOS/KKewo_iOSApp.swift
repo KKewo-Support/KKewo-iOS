@@ -11,7 +11,9 @@ import SwiftUI
 struct KKewo_iOSApp: App {
   var body: some Scene {
     WindowGroup {
-      SelectSoundView()
+      NavigationStack {
+        OnboardingView()
+      }
     }
   }
 }

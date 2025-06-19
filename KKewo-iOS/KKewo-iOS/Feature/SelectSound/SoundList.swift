@@ -30,14 +30,14 @@ struct SoundList: View {
   var body: some View {
     Button(action: onSelect) {
       HStack {
-        Image("soundRecommend")
+        Image(asset: .soundRecommend)
           .resizable()
           .scaledToFit()
           .frame(width: 44, height: 44)
         
         HStack(spacing: 6) {
           if isSelected {
-            Image("sound")
+            Image(asset: .sound)
               .resizable()
               .scaledToFit()
               .frame(width: 18, height: 18)
@@ -51,7 +51,7 @@ struct SoundList: View {
         
         if isSelected {
           Button(action: onPause) {
-            Image("pause")
+            Image(asset: .pause)
               .resizable()
               .scaledToFit()
               .frame(width: 24, height: 24)

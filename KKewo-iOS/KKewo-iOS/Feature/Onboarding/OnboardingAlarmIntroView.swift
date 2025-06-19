@@ -14,9 +14,9 @@ struct OnboardingAlarmIntroView: View {
         .font(.pretendard(type: .semibold, size: 16))
         .foregroundStyle(.gray03)
       
-      Rectangle()
-        .padding(.top, 74)
-        .padding(.horizontal, 63)
+      Spacer()
+      
+      Image(asset: .onboarding1)
     }
   }
 }

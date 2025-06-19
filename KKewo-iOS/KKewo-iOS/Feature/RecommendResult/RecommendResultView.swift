@@ -11,6 +11,9 @@ struct RecommendResultView: View {
   @State private var isButtonState: Bool = false
   @State private var isOverlayShow: Bool = false
   @State private var isButtonTapped: Bool = false
+  @State private var isNext: Bool = false
+  
+  @Environment(\.dismiss) private var dismiss
   
   private var imageState: String {
     return isButtonState ? "pause.fill" : "play.fill"
@@ -21,6 +24,9 @@ struct RecommendResultView: View {
       Color.clear.ignoresSafeArea()
       
       VStack {
+        CustomNavigationBar(title: "알람벨 추천받기", showBackButton: false, rightButtonContent: EmptyView())
+          .padding(.bottom, 32)
+        
         Text("애원하는 프라이데이")
           .font(.pretendard(type: .bold, size: 32))
           .foregroundStyle(.gray05)
@@ -36,7 +42,7 @@ struct RecommendResultView: View {
             .clipShape(.capsule)
             .shadow(color: .gray01, radius: 10)
           
-          Image("tailshadow")
+          Image(asset: .tailShadow)
             .renderingMode(.template)
             .foregroundStyle(.white)
             .padding(.leading, 100)
@@ -46,7 +52,7 @@ struct RecommendResultView: View {
         Button {
           playButtonTapped()
         } label: {
-          Image("SampleResult")
+          Image(asset: .sampleResult)
             .aspectRatio(contentMode: .fill)
             .overlay(
               ZStack {
@@ -71,11 +77,11 @@ struct RecommendResultView: View {
         Spacer()
         
         VStack(spacing: 12) {
-          CustomBorderButton(action: {},
+          CustomBorderButton(action: { nextButtonTapped() },
                              title: "알람 맞추러 가기"
           )
           
-          CustomBorderButton(action: {},
+          CustomBorderButton(action: { againButtonTapped() },
                              title: "다시하기",
                              titleColor: .orange01,
                              backgroundColor: .orange00
@@ -85,21 +91,9 @@ struct RecommendResultView: View {
       }
     }
     .padding(.horizontal, 24)
-    .padding(.top, 50)
-    .navigationTitle("알람벨 추천받기")
-    .navigationBarTitleDisplayMode(.inline)
-    .toolbar {
-      ToolbarItem(placement: .navigationBarTrailing) {
-        Button {
-          // 닫기 동작
-        } label: {
-          Image(systemName: "xmark")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .foregroundStyle(.black)
-            .frame(width: 12, height: 12)
-        }
-      }
+    .navigationBarBackButtonHidden()
+    .navigationDestination(isPresented: $isNext) {
+      MainView()
     }
   }
 }
@@ -132,6 +126,14 @@ private extension RecommendResultView {
         }
       }
     }
+  }
+  
+  func nextButtonTapped() {
+    isNext = true
+  }
+  
+  func againButtonTapped() {
+    dismiss()
   }
 }
 

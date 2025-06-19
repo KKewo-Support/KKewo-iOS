@@ -61,8 +61,8 @@ struct AlarmSettingView: View {
         .foregroundColor(.black)
       Spacer()
       
-      Button {
-        
+      NavigationLink {
+        SelectSoundView()
       } label: {
         HStack {
           Text("Leeo의 감미로운 뮤지컬")
