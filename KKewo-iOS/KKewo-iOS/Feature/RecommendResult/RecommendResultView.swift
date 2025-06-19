@@ -36,7 +36,7 @@ struct RecommendResultView: View {
             .clipShape(.capsule)
             .shadow(color: .gray01, radius: 10)
           
-          Image("tailshadow")
+          Image(asset: .tailShadow)
             .renderingMode(.template)
             .foregroundStyle(.white)
             .padding(.leading, 100)
@@ -46,7 +46,7 @@ struct RecommendResultView: View {
         Button {
           playButtonTapped()
         } label: {
-          Image("SampleResult")
+          Image(asset: .sampleResult)
             .aspectRatio(contentMode: .fill)
             .overlay(
               ZStack {
