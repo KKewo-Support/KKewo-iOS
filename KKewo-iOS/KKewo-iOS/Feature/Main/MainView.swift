@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
-  
   var body: some View {
-    NavigationStack {
-      VStack(spacing: 21) {
-        headerView
-        
-        /// 중단 리스트 뷰
-        AlarmListView()
-      }
+    VStack(spacing: 21) {
+      headerView
+      
+      /// 중단 리스트 뷰
+      AlarmListView()
     }
+    .navigationBarBackButtonHidden()
     .padding(EdgeInsets(top: 19, leading: 16, bottom: 0, trailing: 16))
   }
   
@@ -31,8 +29,8 @@ struct MainView: View {
       
       Spacer()
       
-      Button {
-        
+      NavigationLink {
+        AlarmSetupView()
       } label: {
         Image(systemName: "plus")
           .resizable()

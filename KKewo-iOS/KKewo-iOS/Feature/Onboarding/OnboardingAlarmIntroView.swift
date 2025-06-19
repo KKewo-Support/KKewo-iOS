@@ -16,7 +16,7 @@ struct OnboardingAlarmIntroView: View {
       
       Spacer()
       
-      Image(asset: .onboarding2)
+      Image(asset: .onboarding1)
     }
   }
 }

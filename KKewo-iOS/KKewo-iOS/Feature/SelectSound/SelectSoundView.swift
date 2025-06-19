@@ -111,6 +111,7 @@ struct SelectSoundView: View {
       }
       .padding(.vertical)
     }
+    .navigationBarBackButtonHidden()
     .onAppear {
       selectedSound = savedSound
     }

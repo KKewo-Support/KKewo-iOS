@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecommendSoundView: View {
   @State private var selectedChips: Set<String> = []
+  @State private var isNext: Bool = false
   
   // 카테고리가 확정되지 않아 일단 mock Chips를 사용합니다.
   let chips = ["개성있는", "활발한", "조심스러운", "단호한", "신기한", "시끄러운", "재미있는", "재치있는", "기가막힌", "무서운", "카리스마있는", "맛있는"]
@@ -18,6 +19,8 @@ struct RecommendSoundView: View {
       Color.clear.ignoresSafeArea()
       
       VStack(alignment: .leading) {
+        CustomNavigationBar(title: "알람벨 추천받기", showBackButton: false, rightButtonContent: EmptyView())
+          .padding(.bottom, 66)
         VStack(alignment: .leading, spacing: 4) {
           Text("어떤 스타일이 좋으세요?")
             .font(.pretendard(type: .bold, size: 28))
@@ -38,30 +41,28 @@ struct RecommendSoundView: View {
         
         Spacer()
         
-        CustomBorderButton(action: { },
-                           title: "완료",
-                           titleColor: !selectedChips.isEmpty ? .white : .gray02, backgroundColor: !selectedChips.isEmpty ? .orange01 : .gray01
+        CustomBorderButton(
+          action: {
+            isNextButtonTapped()
+          },
+          title: "완료",
+          titleColor: !selectedChips.isEmpty ? .white : .gray02,
+          backgroundColor: !selectedChips.isEmpty ? .orange01 : .gray01
         )
         .disabled(selectedChips.isEmpty)
       }
     }
     .padding(.horizontal, 24)
-    .padding(.top, 68)
-    .navigationTitle("알람벨 추천받기")
-    .navigationBarTitleDisplayMode(.inline)
-    .toolbar {
-      ToolbarItem(placement: .navigationBarTrailing) {
-        Button {
-          
-        } label: {
-          Image(systemName: "xmark")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .foregroundStyle(.black)
-            .frame(width: 12, height: 12)
-        }
-      }
-    }
+    .navigationDestination(isPresented: $isNext, destination: {
+      RecommendResultView()
+    })
+    .navigationBarBackButtonHidden()
+  }
+}
+
+extension RecommendSoundView {
+  private func isNextButtonTapped() {
+    isNext = true
   }
 }
 

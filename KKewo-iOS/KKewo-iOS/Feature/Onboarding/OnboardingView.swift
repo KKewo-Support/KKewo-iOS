@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
   @State private var currentPage: Int = 0
+  @State private var isNext: Bool = false
   
   private let totalPage = 2
   
@@ -39,24 +40,16 @@ struct OnboardingView: View {
         OnboardingAlarmIntroView()
           .tag(0)
         
-        OnboardingVoiceIntroView()
+        OnboardingVoiceIntroView(isNext: $isNext)
           .tag(1)
       }
-      .padding(.top, 72)
+      
+      .padding(.top, 31)
       .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-      
-      Spacer()
-      
-      Spacer()
-      
-      CustomBorderButton(action: currentPage == 0 ? handleNextAction : handleRecommendAction,
-                         title: currentPage == 0 ? "다음" : "알람벨 추천받기",
-                         titleColor: .white,
-                         backgroundColor: .orange01
-      )
-      .buttonStyle(.plain)
-      .padding(.horizontal, 24)
     }
+    .navigationDestination(isPresented: $isNext, destination: {
+      RecommendSoundView()
+    })
     .padding(.vertical, 24)
   }
 }
@@ -66,10 +59,6 @@ private extension OnboardingView {
     withAnimation(.easeInOut) {
       currentPage = 1
     }
-  }
-  
-  func handleRecommendAction() {
-    
   }
 }
 
