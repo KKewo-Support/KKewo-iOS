@@ -23,11 +23,6 @@ struct DatePickerView: View {
       .background(.white)
       .cornerRadius(12)
       .padding(.horizontal)
-      //            RoundedRectangle(cornerRadius: 12)
-      //                .frame(width: 300, height: 40)
-      //                .foregroundStyle(.orange)
-      //                .opacity(0.51)
-      //                .colorMultiply(.orange01)
     }
   }
 }
