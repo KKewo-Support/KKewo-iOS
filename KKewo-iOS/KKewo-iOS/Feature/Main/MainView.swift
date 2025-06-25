@@ -6,26 +6,27 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MainView: View {
+    
   var body: some View {
     VStack(spacing: 21) {
       headerView
       
       /// 중단 리스트 뷰
-      AlarmListView()
+        AlarmListView()
     }
     .navigationBarBackButtonHidden()
     .padding(EdgeInsets(top: 19, leading: 16, bottom: 0, trailing: 16))
   }
   
-  /// 상단 헤더 뷰 ( 로고 + 알람 생성 버튼)
+  /// 상단 헤더 뷰 (로고 + 알람 생성 버튼)
   private var headerView: some View {
     HStack {
-      Image(.mainLogo)
-        .resizable()
-        .aspectRatio(contentMode: .fit)
-        .frame(width: 134, height: 21)
+        Text("알람")
+            .font(.pretendard(type: .bold, size: 28))
+            .foregroundStyle(.black)
       
       Spacer()
       
@@ -39,6 +40,7 @@ struct MainView: View {
           .foregroundStyle(.orange01)
       }
     }
+    .padding(.horizontal, 20)
   }
 }
 

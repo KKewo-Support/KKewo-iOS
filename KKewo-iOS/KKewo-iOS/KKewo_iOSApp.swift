@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct KKewo_iOSApp: App {
@@ -15,5 +16,6 @@ struct KKewo_iOSApp: App {
         OnboardingView()
       }
     }
+    .modelContainer(for: Alarm.self)
   }
 }

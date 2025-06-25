@@ -12,8 +12,8 @@ struct AlarmSettingView: View {
   @Binding var selectedSound: String
   @Binding var isRepeated: Bool
   @Binding var isSnoozeEnabled: Bool
+    @Binding var selectedDays: [String]
   
-  @State private var selectedDays: [String] = []
   private let days = ["월", "화", "수", "목", "금", "토", "일"]
   
   var body: some View {
@@ -37,6 +37,8 @@ struct AlarmSettingView: View {
         .stroke(.gray01, lineWidth: 2)
     )
   }
+    
+    //MARK: - View
   
   /// 첫번째  row
   private var alarmNameRow: some View {
@@ -65,7 +67,7 @@ struct AlarmSettingView: View {
         SelectSoundView()
       } label: {
         HStack {
-          Text("Leeo의 감미로운 뮤지컬")
+          Text(selectedSound)
             .font(.pretendard(type: .semibold, size: 18))
             .foregroundStyle(.gray03)
           Image(systemName: "chevron.right")
@@ -120,6 +122,7 @@ struct AlarmSettingView: View {
     }
   }
   
+    //MARK: - Function
   /// 요일 선택/해제 함수
   private func toggleDaySelection(_ day: String) {
     if selectedDays.contains(day) {
@@ -128,8 +131,4 @@ struct AlarmSettingView: View {
       selectedDays.append(day)
     }
   }
-}
-
-#Preview {
-  AlarmSetupView()
 }
