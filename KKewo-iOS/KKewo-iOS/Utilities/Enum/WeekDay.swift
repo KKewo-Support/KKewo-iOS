@@ -8,7 +8,7 @@
 import Foundation
 
 /// 요일 정의
-enum Weekday: String, Codable, CaseIterable {
+enum Weekday: String, CaseIterable {
     case mon = "월"
     case tue = "화"
     case wed = "수"
