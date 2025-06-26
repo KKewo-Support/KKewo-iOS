@@ -103,12 +103,23 @@ struct SelectSoundView: View {
               sound: sound,
               isSelected: selectedSound == sound,
               onSelect: {
-                selectedSound = sound
-                savedSound = sound // 앱을 껐다가 켜도 저장됨
-                
-                // 재생
-                soundPlayer.play(soundName: sound)              },
-              onPause: { print("\(sound) 일시정지") }
+                if selectedSound == sound {
+                  soundPlayer.pause()
+                  selectedSound = nil
+                  savedSound = ""
+                } else {
+                  selectedSound = sound
+                  savedSound = sound // 앱을 껐다가 켜도 저장됨
+                  
+                  // 재생
+                  soundPlayer.play(soundName: sound)
+                  
+                  onPause: do { print("\(sound) 일시정지") }
+                }
+              },
+              onPause: {
+                soundPlayer.pause()
+              }
             )
           }
         }
