@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct SelectSoundView: View {
   let soundCategories = ["전체", "신나는", "조용한", "시끄러운"]
@@ -14,6 +15,7 @@ struct SelectSoundView: View {
   @State private var selectedSound: String? = nil
   @Environment(\.dismiss) var dismiss
   @AppStorage("selectedSoundKey") private var savedSound: String = ""
+  @StateObject private var soundPlayer = SoundPlayer()
   
   var body: some View {
     VStack {
@@ -101,10 +103,23 @@ struct SelectSoundView: View {
               sound: sound,
               isSelected: selectedSound == sound,
               onSelect: {
-                selectedSound = sound
-                savedSound = sound // 앱을 껐다가 켜도 저장됨
+                if selectedSound == sound {
+                  soundPlayer.pause()
+                  selectedSound = nil
+                  savedSound = ""
+                } else {
+                  selectedSound = sound
+                  savedSound = sound // 앱을 껐다가 켜도 저장됨
+                  
+                  // 재생
+                  soundPlayer.play(soundName: sound)
+                  
+                  onPause: do { print("\(sound) 일시정지") }
+                }
               },
-              onPause: { print("\(sound) 일시정지") }
+              onPause: {
+                soundPlayer.pause()
+              }
             )
           }
         }
@@ -114,6 +129,7 @@ struct SelectSoundView: View {
     .navigationBarBackButtonHidden()
     .onAppear {
       selectedSound = savedSound
+      soundPlayer.play(soundName: "example") // example.mp3
     }
   }
   
