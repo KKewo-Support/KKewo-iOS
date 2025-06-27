@@ -22,6 +22,7 @@ enum PlaybackState {
 struct SoundList: View {
   let sound: String
   let isSelected: Bool
+  let imageName: String
   let onSelect: () -> Void
   let onPause: () -> Void
   
@@ -30,14 +31,15 @@ struct SoundList: View {
   var body: some View {
     Button(action: onSelect) {
       HStack {
-        Image("soundRecommend")
+//        Image(asset: .soundRecommend)
+        Image(imageName)
           .resizable()
           .scaledToFit()
           .frame(width: 44, height: 44)
         
         HStack(spacing: 6) {
           if isSelected {
-            Image("sound")
+            Image(sound)
               .resizable()
               .scaledToFit()
               .frame(width: 18, height: 18)
@@ -87,6 +89,7 @@ struct SoundList: View {
   SoundList(
     sound: "기본 벨소리",
     isSelected: true,
+    imageName: "soundRecommend",
     onSelect: {},
     onPause: {}
   )

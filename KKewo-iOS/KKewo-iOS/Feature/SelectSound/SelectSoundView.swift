@@ -102,6 +102,7 @@ struct SelectSoundView: View {
             SoundList(
               sound: sound,
               isSelected: selectedSound == sound,
+              imageName: SoundName.imageName(for: sound),
               onSelect: {
                 if selectedSound == sound {
                   soundPlayer.pause()
@@ -126,6 +127,7 @@ struct SelectSoundView: View {
       }
       .padding(.vertical)
     }
+    .navigationBarBackButtonHidden()
     .onAppear {
       selectedSound = savedSound
       soundPlayer.play(soundName: "example") // example.mp3
