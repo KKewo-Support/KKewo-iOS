@@ -27,7 +27,7 @@ struct OnboardingVoiceIntroView: View {
           },
           title: "알람벨 추천 받기",
           titleColor: .white,
-          backgroundColor: .orange01,
+          backgroundColor: .orange01
         )
         .padding(.horizontal, 24)
       }

@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct MainView: View {
+    @State private var showRingView = false
     
   var body: some View {
     VStack(spacing: 21) {
@@ -19,6 +20,12 @@ struct MainView: View {
     }
     .navigationBarBackButtonHidden()
     .padding(EdgeInsets(top: 19, leading: 16, bottom: 0, trailing: 16))
+    .sheet(isPresented: $showRingView) {
+        RingView()
+    }
+    .onReceive(NotificationCenter.default.publisher(for: .didReceiveAlarmTrigger)) { _ in
+        showRingView = true
+    }
   }
   
   /// 상단 헤더 뷰 (로고 + 알람 생성 버튼)
